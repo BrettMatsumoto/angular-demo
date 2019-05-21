@@ -1,4 +1,6 @@
-<div>
+<div class="page">
+  <h1>Home Page</h1>
+  
   <div *ngFor="let chicken of users">
     <div>
       <span [style.color]="'green'" *ngIf="chicken.username === currentUser"> Username: {{ chicken.username }} </span>
