@@ -1,0 +1,11 @@
+<div>
+  <div *ngFor="let chicken of users">
+    <div>
+      <span [style.color]="'green'" *ngIf="chicken.username === currentUser"> Username: {{ chicken.username }} </span>
+
+      <span *ngIf="chicken.username !== currentUser"> Username: {{ chicken.username }} </span>
+    </div>
+
+    <div>Age: {{ chicken.age }}</div>
+  </div>
+</div>
