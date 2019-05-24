@@ -31,30 +31,28 @@ export class ContactComponent {
 
     if (!name) {
       this.nameErrorMessage = 'Name is Required';
-      return this.nameInvalid = true;
-    }
-    else if (name.length < 3) {
+      return (this.nameInvalid = true);
+    } else if (name.length < 3) {
       this.nameErrorMessage = 'Name is too short';
-      return this.nameInvalid = true;
+      return (this.nameInvalid = true);
     }
     this.nameErrorMessage = '';
-    return this.nameInvalid = false;
+    return (this.nameInvalid = false);
   }
 
   validateEmail() {
     const { email } = this.formData;
 
-    if(!email) {
+    if (!email) {
       this.emailErrorMessage = 'Email is Required';
-      return this.emailInvalid = true;
-    }
-    else if (!email.includes('@')) {
+      return (this.emailInvalid = true);
+    } else if (!email.includes('@')) {
       this.emailErrorMessage = 'Email Not Formatted Correctly';
-      return this.emailInvalid = true;
+      return (this.emailInvalid = true);
     }
 
     this.emailErrorMessage = '';
-    return this.emailInvalid = false;
+    return (this.emailInvalid = false);
   }
 
   validateMessage() {
@@ -62,11 +60,11 @@ export class ContactComponent {
 
     if (!message) {
       this.messageErrorMessage = 'Message is Required';
-      return this.messageInvalid = true;
+      return (this.messageInvalid = true);
     }
 
     this.messageErrorMessage = '';
-    return this.messageInvalid = false;
+    return (this.messageInvalid = false);
   }
 
   submit() {

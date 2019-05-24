@@ -6,6 +6,8 @@ import { SessionService } from './session.service';
   providedIn: 'root',
 })
 export class AuthService {
+  redirectUrl = '';
+  
   constructor(private backend: BackendService, private session: SessionService) {}
 
   regsiter(data) {
