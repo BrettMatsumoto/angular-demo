@@ -10,9 +10,11 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ChildComponent } from './components/child/child.component';
+import { ParentComponent } from './components/parent/parent.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, ContactComponent, HeaderComponent, LoginComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent, ContactComponent, HeaderComponent, LoginComponent, ChildComponent, ParentComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
