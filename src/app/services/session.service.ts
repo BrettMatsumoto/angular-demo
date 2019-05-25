@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+const USER_KEY = 'user'
 
 @Injectable({
   providedIn: 'root',
 })
 export class SessionService {
   user = {
-    loggedIn: false,
     username: '',
   };
 
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+
   constructor() {
-    const userString = window.localStorage.getItem('user');
+    const userString = window.localStorage.getItem(USER_KEY);
     try {
       if (userString) {
         this.user = JSON.parse(userString);
+
+        // update isLoggedInSubject with new value on construction
+        this.isLoggedInSubject.next(!!userString);
       } else {
         console.log('user was not found');
       }
@@ -29,20 +36,22 @@ export class SessionService {
   setSession(username) {
     // save to memeory
     this.user.username = username;
-    this.user.loggedIn = true;
 
     //save to localstorage
     const userString = JSON.stringify(this.user);
-    window.localStorage.setItem('user', userString);
+    window.localStorage.setItem(USER_KEY, userString);
+
+    // update subject
+    this.isLoggedInSubject.next(true)
   }
 
   clearSession() {
     this.user.username = '';
-    this.user.loggedIn = false;
-    window.localStorage.removeItem('user');
+    window.localStorage.removeItem(USER_KEY);
+    this.isLoggedInSubject.next(false);
   }
 
-  isLoggedIn() {
-      return this.user.loggedIn;
+  isLoggedInAsAObservable() {
+    return this.isLoggedInSubject.asObservable();
   }
 }
